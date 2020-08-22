@@ -52,17 +52,36 @@ class binarysearch:
         right_height = self._height(cur_node.right_child,cur_height+1)
         return max(left_height,right_height);
 
+    def search(self,value):
+        if self.root !=None:
+            return self._search(value,self.root);
+        else:
+            return False;
+    
+    def _search(self,value,cur_node):
+        if value == cur_node.value:
+            return True;
+        elif value<cur_node.value and cur_node.left_child!=None:
+            return self._search(value,cur_node.left_child);
+        elif value>cur_node.value and cur_node.right_child!=None:
+            return self._search(value,cur_node.right_child);
+        return False;
 
 
-def fill_tree(tree , num_elem = 100 , max_int = 1000):
-    from random import randint;
-    for _  in range(num_elem):
-        curr_elem = randint(0,max_int);
-        tree.insert(curr_elem);
-    return tree;
 
 tree = binarysearch()
-tree = fill_tree(tree);
+tree.insert(5);
+tree.insert(14);
+tree.insert(9);
+tree.insert(12);
+tree.insert(13);
+tree.insert(8);
+tree.insert(35);
+tree.insert(24);
+tree.insert(19);
 tree.print_tree();
+
+print(tree.search(35));
+print(tree.search(44));
 
 print("Tree Height "+str(tree.height()));
