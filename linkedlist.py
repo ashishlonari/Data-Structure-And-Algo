@@ -42,6 +42,23 @@ class linkedlist:
                 return cur_node.data;
             cur_indx +=1;
 
+    def erase(self,index):
+        if index >= self.length():
+            print("index not in range");
+            return None;
+        cur_indx = 0;
+        cur_node = self.head;
+        while True:
+            last_node = cur_node;
+            cur_node = cur_node.next;
+            if cur_indx == index:
+                last_node.next = cur_node.next;
+                return;
+            cur_indx +=1
+
+
+
+
 
 
 mylist  = linkedlist();
@@ -52,3 +69,5 @@ mylist.append(34);
 mylist.display();
 print(mylist.get(2));
 
+mylist.erase(3);
+mylist.display();
